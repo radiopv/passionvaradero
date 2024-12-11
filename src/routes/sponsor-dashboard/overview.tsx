@@ -65,6 +65,7 @@ export default function SponsorDashboard() {
 
   const handleCardClick = (route: string) => {
     try {
+      console.log("Navigating to:", route); // Pour le débogage
       navigate(route);
     } catch (error) {
       console.error("Navigation error:", error);
@@ -81,7 +82,10 @@ export default function SponsorDashboard() {
       <h1 className="text-2xl font-bold mb-6">Tableau de bord Parrain</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <Card className="p-6 hover:shadow-lg transition-shadow cursor-pointer" onClick={() => handleCardClick("/profile")}>
+        <Card 
+          className="p-6 hover:shadow-lg transition-shadow cursor-pointer" 
+          onClick={() => handleCardClick("/sponsor-dashboard/profile")}
+        >
           <h2 className="text-xl font-semibold mb-4">Mon Profil</h2>
           <p className="text-gray-600 mb-4">Gérez vos informations personnelles</p>
           <Button className="w-full">
@@ -89,7 +93,10 @@ export default function SponsorDashboard() {
           </Button>
         </Card>
 
-        <Card className="p-6 hover:shadow-lg transition-shadow cursor-pointer" onClick={() => handleCardClick("/children")}>
+        <Card 
+          className="p-6 hover:shadow-lg transition-shadow cursor-pointer" 
+          onClick={() => handleCardClick("/sponsor-dashboard/children")}
+        >
           <h2 className="text-xl font-semibold mb-4">Mes Filleuls</h2>
           <p className="text-gray-600 mb-4">
             {childrenData?.length 
@@ -101,7 +108,10 @@ export default function SponsorDashboard() {
           </Button>
         </Card>
 
-        <Card className="p-6 hover:shadow-lg transition-shadow cursor-pointer" onClick={() => handleCardClick("/messages")}>
+        <Card 
+          className="p-6 hover:shadow-lg transition-shadow cursor-pointer" 
+          onClick={() => handleCardClick("/sponsor-dashboard/messages")}
+        >
           <h2 className="text-xl font-semibold mb-4">Messages</h2>
           <p className="text-gray-600 mb-4">Consultez vos messages</p>
           <Button className="w-full">
@@ -109,7 +119,10 @@ export default function SponsorDashboard() {
           </Button>
         </Card>
 
-        <Card className="p-6 hover:shadow-lg transition-shadow cursor-pointer" onClick={() => handleCardClick("/testimonials")}>
+        <Card 
+          className="p-6 hover:shadow-lg transition-shadow cursor-pointer" 
+          onClick={() => handleCardClick("/sponsor-dashboard/testimonials")}
+        >
           <h2 className="text-xl font-semibold mb-4">Témoignages</h2>
           <p className="text-gray-600 mb-4">Partagez votre expérience</p>
           <Button className="w-full">
@@ -117,7 +130,10 @@ export default function SponsorDashboard() {
           </Button>
         </Card>
 
-        <Card className="p-6 hover:shadow-lg transition-shadow cursor-pointer" onClick={() => handleCardClick("/album")}>
+        <Card 
+          className="p-6 hover:shadow-lg transition-shadow cursor-pointer" 
+          onClick={() => handleCardClick("/sponsor-dashboard/album")}
+        >
           <h2 className="text-xl font-semibold mb-4">Album Photos</h2>
           <p className="text-gray-600 mb-4">Consultez les photos de vos filleuls</p>
           <Button className="w-full">
