@@ -13,22 +13,29 @@ const DonationsPage = () => {
     queryFn: () => getDonations(filters),
   });
 
-  // Trier les dons par date décroissante (plus récents en premier)
   const sortedDonations = donations?.sort((a, b) => {
     return new Date(b.donation_date).getTime() - new Date(a.donation_date).getTime();
   });
 
   if (isLoading) {
-    return <div className="flex justify-center p-8">Chargement des dons...</div>;
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-[#FEF7CD] to-[#FEC6A1]/20">
+        <div className="flex justify-center items-center p-8 text-[#F97316]">
+          Chargement des dons...
+        </div>
+      </div>
+    );
   }
 
   return (
-    <div className="container mx-auto p-4">
-      <DonationFilters />
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-        {sortedDonations?.map((donation) => (
-          <DonationCard key={donation.id} donation={donation} />
-        ))}
+    <div className="min-h-screen bg-gradient-to-br from-[#FEF7CD] to-[#FEC6A1]/20">
+      <div className="container mx-auto p-4">
+        <DonationFilters />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+          {sortedDonations?.map((donation) => (
+            <DonationCard key={donation.id} donation={donation} />
+          ))}
+        </div>
       </div>
     </div>
   );
