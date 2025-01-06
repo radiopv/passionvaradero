@@ -8,6 +8,10 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
+  build: {
+    sourcemap: mode === 'development',
+    minify: mode !== 'development',
+  },
   plugins: [
     react(),
     mode === 'development' && componentTagger(),
