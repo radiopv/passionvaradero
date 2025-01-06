@@ -57,87 +57,60 @@ export default function SponsorDashboard() {
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <Loader2 className="w-8 h-8 animate-spin" />
+      <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-[#FEF7CD] to-[#FEC6A1]/20">
+        <Loader2 className="w-8 h-8 animate-spin text-[#F97316]" />
       </div>
     );
   }
 
-  const handleCardClick = (route: string) => {
-    try {
-      navigate(route);
-    } catch (error) {
-      toast({
-        variant: "destructive",
-        title: "Erreur de navigation",
-        description: "Impossible d'accéder à cette page. Veuillez réessayer.",
-      });
-    }
-  };
-
   return (
-    <div className="container mx-auto p-4 space-y-6">
-      <h1 className="text-2xl font-bold mb-6">Tableau de bord Parrain</h1>
+    <div className="min-h-screen bg-gradient-to-br from-[#FEF7CD] to-[#FEC6A1]/20">
+      <div className="container mx-auto p-4 space-y-6">
+        <h1 className="text-2xl font-bold mb-6 text-[#F97316]">Tableau de bord Parrain</h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <Card className="p-6 hover:shadow-lg transition-shadow">
-          <h2 className="text-xl font-semibold mb-4">Mon Profil</h2>
-          <p className="text-gray-600 mb-4">Gérez vos informations personnelles</p>
-          <Button 
-            onClick={() => handleCardClick("/sponsor-dashboard/profile")}
-            className="w-full"
-          >
-            Voir mon profil
-          </Button>
-        </Card>
-
-        <Card className="p-6 hover:shadow-lg transition-shadow">
-          <h2 className="text-xl font-semibold mb-4">Mes Filleuls</h2>
-          <p className="text-gray-600 mb-4">
-            {childrenData?.length 
-              ? `Vous parrainez ${childrenData.length} enfant(s)`
-              : "Vous ne parrainez pas encore d'enfant"}
-          </p>
-          <Button 
-            onClick={() => handleCardClick("/sponsor-dashboard/children")}
-            className="w-full"
-          >
-            Voir mes filleuls
-          </Button>
-        </Card>
-
-        <Card className="p-6 hover:shadow-lg transition-shadow">
-          <h2 className="text-xl font-semibold mb-4">Messages</h2>
-          <p className="text-gray-600 mb-4">Consultez vos messages</p>
-          <Button 
-            onClick={() => handleCardClick("/sponsor-dashboard/messages")}
-            className="w-full"
-          >
-            Voir mes messages
-          </Button>
-        </Card>
-
-        <Card className="p-6 hover:shadow-lg transition-shadow">
-          <h2 className="text-xl font-semibold mb-4">Témoignages</h2>
-          <p className="text-gray-600 mb-4">Partagez votre expérience</p>
-          <Button 
-            onClick={() => handleCardClick("/sponsor-dashboard/testimonials")}
-            className="w-full"
-          >
-            Voir mes témoignages
-          </Button>
-        </Card>
-
-        <Card className="p-6 hover:shadow-lg transition-shadow">
-          <h2 className="text-xl font-semibold mb-4">Album Photos</h2>
-          <p className="text-gray-600 mb-4">Consultez les photos de vos filleuls</p>
-          <Button 
-            onClick={() => handleCardClick("/sponsor-dashboard/album")}
-            className="w-full"
-          >
-            Voir l'album
-          </Button>
-        </Card>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {[
+            {
+              title: "Mon Profil",
+              description: "Gérez vos informations personnelles",
+              route: "/sponsor-dashboard/profile"
+            },
+            {
+              title: "Mes Filleuls",
+              description: childrenData?.length 
+                ? `Vous parrainez ${childrenData.length} enfant(s)`
+                : "Vous ne parrainez pas encore d'enfant",
+              route: "/sponsor-dashboard/children"
+            },
+            {
+              title: "Messages",
+              description: "Consultez vos messages",
+              route: "/sponsor-dashboard/messages"
+            },
+            {
+              title: "Témoignages",
+              description: "Partagez votre expérience",
+              route: "/sponsor-dashboard/testimonials"
+            },
+            {
+              title: "Album Photos",
+              description: "Consultez les photos de vos filleuls",
+              route: "/sponsor-dashboard/album"
+            }
+          ].map((item, index) => (
+            <Card 
+              key={index}
+              className="p-6 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 bg-white/80 border-l-4 border-[#ea384c] cursor-pointer" 
+              onClick={() => navigate(item.route)}
+            >
+              <h2 className="text-xl font-semibold mb-4 text-[#F97316]">{item.title}</h2>
+              <p className="text-gray-600 mb-4">{item.description}</p>
+              <Button className="w-full bg-[#F97316] hover:bg-[#ea384c] transition-colors">
+                Voir plus
+              </Button>
+            </Card>
+          ))}
+        </div>
       </div>
     </div>
   );
