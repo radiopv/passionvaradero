@@ -5,5 +5,9 @@
   },
   "scripts": {
     "build:dev": "vite build --mode development"
+  },
+  "devDependencies": {
+    "vite": "^4.0.0", // Ensure Vite is installed
+    "typescript": "^5.0.0" // Ensure TypeScript is installed if you're using TS
   }
 }
